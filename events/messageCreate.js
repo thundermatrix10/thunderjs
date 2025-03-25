@@ -120,7 +120,7 @@ async function determineIfResponseNeeded(message, contextData) {
             
         // Ask OpenAI to decide if response is needed and update summary
         const response = await global.openai.chat.completions.create({
-            model: "llama-3.3-70b-specdec",
+            model: "gpt-3.5-turbo",
             max_completion_tokens: 100,
             messages: [
                 { 
