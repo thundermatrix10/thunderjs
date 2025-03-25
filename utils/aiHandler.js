@@ -171,11 +171,16 @@ class AIHandler {
             const prompt = `Based on the conversation summary: "${contextSummary}", 
             respond to user "${message.author.username}" who said: "${message.content}"`;
             
-            return this.handleOpenAIStream(
-                message,
-                prompt,
-                hardcoded_prompt
-            );
+            // return this.handleOpenAIStream(
+            //     message,
+            //     prompt,
+            //     hardcoded_prompt
+            // );
+		return this.handleDeepSeek(
+		    message,
+		    prompt,
+		    hardcoded_prompt
+		);
         } catch (error) {
             console.error("Error processing contextual response:", error);
             await message.channel.send("Sorry, I encountered an error processing your request.");
@@ -183,6 +188,41 @@ class AIHandler {
         }
     }
 
+	async handleDeepSeek(message, prompt, systemPrompt = "") {
+	    try {
+	        await message.channel.sendTyping();
+	
+	        const response = await axios.post(
+	            'https://api.together.xyz/v1/chat/completions',
+	            {
+	                model: "deepseek-ai/deepseek-chat", // or deepseek-coder
+	                messages: [
+	                    { role: "system", content: systemPrompt },
+	                    { role: "user", content: prompt }
+	                ],
+	                temperature: 0.7,
+	                max_tokens: 1000
+	            },
+	            {
+	                headers: {
+	                    'Authorization': `Bearer ${process.env.TOGETHER_API_KEY}`,
+	                    'Content-Type': 'application/json'
+	                }
+	            }
+	        );
+	
+	        const text = response.data.choices[0].message.content;
+	        await global.sendMessage(text, message.channel);
+	        return text;
+	
+	    } catch (error) {
+	        console.error("Error calling DeepSeek:", error);
+	        await message.channel.send("Sorry, DeepSeek failed to respond.");
+	        return null;
+	    }
+	}
+
+	
     // Handle images with context awareness
     async handleImageWithContext(message, contextSummary) {
         const promptText = `User ${message.author.username} shared this image with message: "${message.content}". 
