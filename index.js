@@ -135,6 +135,14 @@ global.setFFlag = (name, value) => {
   return oldValue;
 };
 
+const tempFile = 'temp.json';
+
+// Auto-create temp.json if it doesn't exist
+if (!fs.existsSync(tempFile)) {
+    fs.writeFileSync(tempFile, JSON.stringify({}, null, 4));
+    console.log("Created temp.json");
+}
+
 global.get = name => JSON.parse(fs.readFileSync('temp.json'))[name];
 global.set = (name, value) => {
   const file = 'temp.json';
