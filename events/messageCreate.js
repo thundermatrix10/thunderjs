@@ -132,7 +132,7 @@ async function determineIfResponseNeeded(message, contextData) {
                     
                     ALWAYS RESPOND IF:
                     - You (@thunder.js) are directly mentioned or replied to
-                    - The message contains "semp", "ai", or a question
+                    - The message contains "thunder", "ai", or a question
                     - The message is clearly addressing you or asking for your help` 
                 },
                 { 
