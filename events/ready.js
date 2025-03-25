@@ -1,6 +1,6 @@
 const { Events } = require('discord.js');
-const guildId = '1086613043896668210';
-const channelId = '1086613044429324309';
+const guildId = '757611583919751178';
+const channelId = '757611583919751181';
 
 module.exports = {
     name: Events.ClientReady,
