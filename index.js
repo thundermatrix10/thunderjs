@@ -28,7 +28,7 @@ const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } = require('@google/generative-ai');
 // const { GoogleAIFileManager } = require('@google/generative-ai/files');
-const keep_alive = require('./keep_alive.js');
+// const keep_alive = require('./keep_alive.js');
 
 // Setup Discord client with intents
 const client = new Client({
