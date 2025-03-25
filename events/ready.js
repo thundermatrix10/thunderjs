@@ -22,7 +22,7 @@ module.exports = {
         global["defaultChannel"] = channel;
 
         if (global.get("error") != null) {
-            await channel.send("Sempjs here, an error occured in the previous session. ```" + JSON.stringify(global.get("error")) + "```");
+            await channel.send("thunderjs here, an error occured in the previous session. ```" + JSON.stringify(global.get("error")) + "```");
             global.set("error", null);
         }
     },
