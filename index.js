@@ -27,7 +27,7 @@ const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } = require('@google/generative-ai');
-const { GoogleAIFileManager } = require('@google/generative-ai/files');
+// const { GoogleAIFileManager } = require('@google/generative-ai/files');
 const keep_alive = require('./keep_alive.js');
 
 // Setup Discord client with intents
@@ -84,7 +84,7 @@ for (const key in fFlagData) {
 
 // Google AI setup
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const fileManager = new GoogleAIFileManager(process.env.GEMINI_API_KEY);
+// const fileManager = new GoogleAIFileManager(process.env.GEMINI_API_KEY);
 const safetySettings = [
   { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
   { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
@@ -95,7 +95,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash", safetySettin
 
 global.gemini = model;
 global.geminivision = model;
-global.fileManager = fileManager;
+// global.fileManager = fileManager;
 global.client = client;
 
 // OpenAI setup
