@@ -1,6 +1,6 @@
 const { Events } = require('discord.js');
 const aiHandler = require('../utils/aiHandler');
-const fileManager = require('../utils/fileManager');
+// const fileManager = require('../utils/fileManager');
 const messageFormatter = require('../utils/messageFormatter');
 
 require('dotenv').config();
@@ -73,7 +73,7 @@ module.exports = {
                         botResponse = await aiHandler.handleImageWithContext(message, contextSummary.lastMessages);
                     } else {
                         // Handle other file attachments
-                        botResponse = await fileManager.processMediaFile(message, firstAttachment);
+                        // botResponse = await fileManager.processMediaFile(message, firstAttachment);
                     }
                 } else {
                     // Text-based AI response with contextual awareness
