@@ -74,6 +74,14 @@ for (const file of eventFiles) {
   }
 }
 
+const fastFlagsFile = 'fastFlags.json';
+
+// Ensure fastFlags.json exists
+if (!fs.existsSync(fastFlagsFile)) {
+    fs.writeFileSync(fastFlagsFile, JSON.stringify({}, null, 4));
+    console.log("Created fastFlags.json");
+}
+
 // Load Fast Flags
 const fFlagData = JSON.parse(fs.readFileSync('fastFlags.json'));
 for (const key in fFlagData) {
