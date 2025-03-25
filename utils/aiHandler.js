@@ -40,7 +40,7 @@ class AIHandler {
             
             console.log("prompt  :", prompt);
            const response = await global.openai.chat.completions.create({
-                model: "deepseek-r1-distill-llama-70b",
+                model: "gpt-3.5-turbo",
 		//model: "qwen-qwq-32b",
 		messages: [
                     { role: "system", content: systemPrompt },
