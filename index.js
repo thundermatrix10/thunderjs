@@ -143,7 +143,16 @@ if (!fs.existsSync(tempFile)) {
     console.log("Created temp.json");
 }
 
-global.get = name => JSON.parse(fs.readFileSync('temp.json'))[name];
+// global.get = name => JSON.parse(fs.readFileSync('temp.json'))[name];
+global.get = name => {
+    if (!fs.existsSync('temp.json')) {
+        fs.writeFileSync('temp.json', JSON.stringify({}));  // Create file if missing
+    }
+
+    const data = JSON.parse(fs.readFileSync('temp.json', 'utf-8'));
+    return data[name] || {};  // Return an empty object if key is missing
+};
+
 global.set = (name, value) => {
   const file = 'temp.json';
   const data = JSON.parse(fs.readFileSync(file));
