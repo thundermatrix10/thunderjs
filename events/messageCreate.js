@@ -16,7 +16,7 @@ module.exports = {
     name: Events.MessageCreate,
     async execute(message) {
         // Ignore self and bot messages
-        if ((message.author.id === 1099527855643316284n) || message.bot) return;
+        if ((message.author.id === 1354048588610539591n ) || message.bot) return;
 
         try {
             // Process message content
@@ -112,8 +112,8 @@ module.exports = {
 // Function to ask OpenAI if a response is needed and to update the context summary
 async function determineIfResponseNeeded(message, contextData) {
     try {
-        const isBotMentioned = message.content.includes("<@1099527855643316284>") || 
-            (message.mentions?.repliedUser?.id === '1099527855643316284');
+        const isBotMentioned = message.content.includes("<@1354048588610539591>") || 
+            (message.mentions?.repliedUser?.id === '1354048588610539591');
         
         // Format recent conversation history by last 15 messages as lastMessages is a string.
         const recentHistory = contextData.lastMessages.split("\n").slice(-15).join("\n");
@@ -125,13 +125,13 @@ async function determineIfResponseNeeded(message, contextData) {
             messages: [
                 { 
                     role: "system", 
-                    content: `You are a Discord bot named 'semp.js'. Your job is to:
+                    content: `You are a Discord bot named 'thunder.js'. Your job is to:
                     1. Determine if you should respond to the latest message based on context and only IF required and within your conversation
                     
                     Respond whether true or false
                     
                     ALWAYS RESPOND IF:
-                    - You (@semp.js) are directly mentioned or replied to
+                    - You (@thunder.js) are directly mentioned or replied to
                     - The message contains "semp", "ai", or a question
                     - The message is clearly addressing you or asking for your help` 
                 },
@@ -181,8 +181,8 @@ async function determineIfResponseNeeded(message, contextData) {
         console.error("Error determining if response is needed:", error);
         // Fallback to basic logic if AI fails
         return {
-            shouldRespond: message.content.includes("<@1099527855643316284>") || 
-                (message.mentions?.repliedUser?.id === '1099527855643316284'),
+            shouldRespond: message.content.includes("<@1354048588610539591>") || 
+                (message.mentions?.repliedUser?.id === '1354048588610539591'),
             updatedSummary: contextData.summary
         };
     }
