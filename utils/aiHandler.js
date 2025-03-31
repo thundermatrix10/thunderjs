@@ -41,7 +41,7 @@ class AIHandler {
             
             console.log("prompt  :", prompt);
            const response = await global.openai.chat.completions.create({
-                model: "mistralai/mistral-7b-instruct",
+                model: "llama3-8b-8192",
 		//model: "qwen-qwq-32b",
 		messages: [
                     // { role: "system", content: systemPrompt },
