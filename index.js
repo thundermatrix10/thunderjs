@@ -109,8 +109,9 @@ global.client = client;
 // OpenAI setup
 import("openai").then(openai => {
   global.openai = new openai.OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-    baseURL: process.env.OPENAI_BASE_URL,
+    apiKey: process.env.GROQ_API_KEY,
+    baseURL: "https://api.groq.com/openai/v1",
+    // baseURL: process.env.OPENAI_BASE_URL,
     dangerouslyAllowBrowser: true
   });
   console.log("Connected to OpenAI");
