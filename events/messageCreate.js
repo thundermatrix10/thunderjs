@@ -87,7 +87,7 @@ async function determineIfResponseNeeded(message, contextData) {
         const response = await axios.post(
             'https://api.groq.com/openai/v1/chat/completions',
             {
-                model: "mixtral-8x7b-32768",
+                model: "llama3-8b-8192",
                 messages: [
                     {
                         role: "system",
@@ -96,7 +96,7 @@ async function determineIfResponseNeeded(message, contextData) {
 
                         Respond whether true or false
 
-                        ALWAYS RESPOND IF:
+                        ALWAYS RESPOND WHEN:
                         - You (@thunder.js) are directly mentioned or replied to
                         - The message contains \"thunder\", \"ai\", or a question
                         - The message is clearly addressing you or asking for your help`
